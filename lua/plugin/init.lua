@@ -9,6 +9,7 @@ require('packer').startup(function(use)
 
     require('plugin/packer')(use)
     require('plugin/nvim-lspconfig').init(use)
+    require('plugin/nvim-lsp-installer')(use)
     require('plugin/nvim-cmp').init(use)
     require('plugin/treesitter')(use)
     --require('plugin/onedark')(use)
