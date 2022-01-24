@@ -132,7 +132,7 @@ vim.opt.smartindent = true
 vim.cmd 'set wrap'
 
 vim.opt.foldenable = false
-vim.opt.list = true
+--vim.opt.list = true
 vim.opt.shiftround = true
 vim.opt.modeline = true
 vim.opt.enc = 'utf-8'
