@@ -89,7 +89,7 @@ vim.cmd 'set foldcolumn=1'
 vim.cmd 'syntax on'
 
 vim.cmd 'set termguicolors'
-vim.cmd 'colorscheme onedark'
+vim.cmd 'colorscheme github_dark_default'
 
 vim.cmd 'set background=dark'
 
