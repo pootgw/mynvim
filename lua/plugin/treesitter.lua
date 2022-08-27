@@ -18,7 +18,7 @@ return function(packer)
                     },
                 },
                 indent = {
-                    enable = true
+                    enable = false
                 },
             }
             vim.wo.foldmethod = 'expr'

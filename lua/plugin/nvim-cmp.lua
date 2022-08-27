@@ -32,36 +32,56 @@ function M.init(packer)
                     ['<C-k>'] = cmp.mapping.select_prev_item(),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.close(),
+                    ['<C-n>'] = {
+                        c = function(fallback)
+                            local cmp = require('cmp')
+                            if cmp.visible() then
+                                cmp.select_next_item()
+                            else
+                                fallback()
+                            end
+                        end,
+                    },
+                    ['<C-p>'] = {
+                        c = function(fallback)
+                            local cmp = require('cmp')
+                            if cmp.visible() then
+                                cmp.select_prev_item()
+                            else
+                                fallback()
+                            end
+                        end,
+                    },
                     ['<CR>'] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
-                        select = true,
+                        select = false,
                     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
                 },
                 sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
+                    { name = 'nvim_lsp' },
                     -- { name = 'vsnip' }, -- For vsnip users.
                     -- { name = 'luasnip' }, -- For luasnip users.
                     -- { name = 'ultisnips' }, -- For ultisnips users.
                     -- { name = 'snippy' }, -- For snippy users.
                 }, {
                     { name = 'buffer' },
-                    })
+                })
             })
 
             -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline('/', {
                 sources = {
-                { name = 'buffer' }
+                    { name = 'buffer' }
                 }
             })
 
             -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline(':', {
                 sources = cmp.config.sources({
-                { name = 'path' }
+                    { name = 'path' }
                 }, {
                     { name = 'cmdline' }
-                    })
+                })
             })
         end,
     }
