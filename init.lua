@@ -3,10 +3,8 @@ vim.g.mapleader = ","
 vim.g.bulitin_lsp = true
 
 require('plugin')
-require('lang/intelephense')
-require('lang/gopls')
-require('lang/js')
-require('lang/lua')
+require('lang')
+require('keymap')
 
 -- Behaviors
 vim.opt.belloff = "all" -- NO BELLS!
@@ -64,20 +62,3 @@ vim.opt.ignorecase = true -- case insensitive search...
 vim.opt.smartcase = true -- unless I use caps
 vim.opt.hlsearch = true -- highlight matching text
 vim.opt.incsearch = true -- update results while I type
-
-
-local util = require('util')
-util.noremap('n', '<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>')
-util.noremap('n', '<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>')
-util.noremap('n', '<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>')
-util.noremap('n', '<leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>')
-util.noremap('n', '<leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>')
-util.noremap('n', '<leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>')
-util.noremap('n', '<leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>')
-util.noremap('n', '<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
-util.noremap('n', '<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
-
-util.noremap('n', '<leader>ff', '<Cmd>Telescope find_files<CR>')
-util.noremap('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>')
-util.noremap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>')
-util.noremap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>')

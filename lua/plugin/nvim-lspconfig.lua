@@ -18,13 +18,13 @@ function M.init(packer)
             end
 
             sign_define('LspDiagnosticsSignError',
-            {text='x', texthl='LspDiagnosticsError', linehl='', numhl=''})
+                {text='x', texthl='LspDiagnosticsError', linehl='', numhl=''})
             sign_define('LspDiagnosticsSignWarning',
-            {text='!', texthl='LspDiagnosticsWarning', linehl='', numhl=''})
+                {text='!', texthl='LspDiagnosticsWarning', linehl='', numhl=''})
             sign_define('LspDiagnosticsSignInformation',
-            {text='~', texthl='LspDiagnosticsInformation', linehl='', numhl=''})
+                {text='~', texthl='LspDiagnosticsInformation', linehl='', numhl=''})
             sign_define('LspDiagnosticsSignHint',
-            {text='?', texthl='LspDiagnosticsHint', linehl='', numhl=''})
+                {text='?', texthl='LspDiagnosticsHint', linehl='', numhl=''})
         end,
     }
     packer "ray-x/lsp_signature.nvim"
