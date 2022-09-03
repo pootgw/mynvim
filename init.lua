@@ -1,143 +1,69 @@
----------------------------------------------------------------
--- => Packer 
----------------------------------------------------------------
+-- Essentials
+vim.g.mapleader = ","
+vim.g.bulitin_lsp = true
 
 require('plugin')
 require('lang/intelephense')
 require('lang/gopls')
+require('lang/js')
+require('lang/lua')
 
----------------------------------------------------------------
--- => General
----------------------------------------------------------------
+-- Behaviors
+vim.opt.belloff = "all" -- NO BELLS!
+vim.opt.completeopt = { "menu", "menuone", "noselect" } -- ins-completion how vsnip likes it
+vim.opt.swapfile = false -- no swap files
+vim.opt.inccommand = "nosplit" -- preview %s commands live as I type
+vim.opt.undofile = true -- keep track of my 'undo's between sessions
+vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading" -- search with rg
+vim.opt.grepformat = "%f:%l:%c:%m" -- filename:line number:column number:error message
+vim.opt.mouse = "nv" -- use mouse in normal, visual modes
 
--- Sets how many lines of history VIM has to remember
-vim.cmd 'set history=500'
+-- Indentation
+vim.opt.autoindent = true -- continue indentation to new line
+vim.opt.smartindent = true -- add extra indent when it makes sense
+vim.opt.smarttab = true -- <Tab> at the start of a line behaves as expected
+vim.opt.expandtab = true -- <Tab> inserts spaces
+vim.opt.shiftwidth = 4 -- >>, << shift line by 4 spaces
+vim.opt.tabstop = 4 -- <Tab> appears as 4 spaces
+vim.opt.softtabstop = 4 -- <Tab> behaves as 4 spaces when editing
 
--- Enable filetype plugins
-vim.cmd 'filetype on'
-vim.cmd 'filetype plugin on'
+-- Colors
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+vim.cmd("colorscheme onedark")
 
--- Set to auto read when a file is changed from the outside
-vim.cmd 'set autoread'
--- au FocusGained,BufEnter * checktime
+-- Look and feel
+vim.opt.number = true -- numbers?
+vim.opt.relativenumber = false -- no numbers?
+vim.opt.signcolumn = "auto" -- show the sign column if necessary
+vim.opt.cursorline = false -- don't highlight current line
+vim.opt.list = true -- show list chars
+--vim.opt.listchars = {
+--    -- these list chars
+--    tab = "<->",
+--    nbsp = "␣",
+--    extends = "…",
+--    precedes = "…",
+--    trail = "·",
+--    multispace = "·", -- show chars if I have multiple spaces between text
+--    leadmultispace = " ", -- ...but don't show any when they're at the start
+--}
+vim.opt.scrolloff = 10 -- padding between cursor and top/bottom of window
+vim.opt.foldlevel = 0 -- allow folding the whole way down
+vim.opt.foldlevelstart = 99 -- open files with all folds open
+vim.opt.splitright = true -- prefer vsplitting to the right
+vim.opt.splitbelow = true -- prefer splitting below
+vim.opt.wrap = false -- don't wrap my text
+vim.opt.textwidth = 120 -- wrap here for comments by default
+vim.opt.cursorline = true -- hightlight line cursor is on
+vim.opt.laststatus = 3 -- single global statusline
 
--- With a map leader it's possible to do extra key combinations
--- like <leader>w saves the current file
-vim.g.mapleader = ','
-
--- Fast saving
--- nmap <leader>w :w!<cr>
-
--- :W sudo saves the file
--- (useful for handling the permission-denied error)
--- command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
----------------------------------------------------------------
--- => VIM user interface
----------------------------------------------------------------
--- Set 7 lines to the cursor - when moving vertically using j/k
-vim.cmd 'set so=7'
-
--- Always show current position
-vim.cmd 'set ruler'
-
--- Height of the command bar
-vim.cmd 'set cmdheight=1'
-
--- A buffer becomes hidden when it is abandoned
-vim.cmd 'set hid'
-
--- Configure backspace so it acts as it should act
---set backspace=eol,start,indent
-vim.opt.backspace = 'indent,eol,start'
-vim.cmd 'set whichwrap+=<,>,h,l'
-
--- Ignore case when searching
-vim.opt.ignorecase = true
-
--- When searching try to be smart about cases
-vim.opt.smartcase = true
-
--- Highlight search results
-vim.cmd 'set hlsearch'
-
--- Makes search act like search in modern browsers
-vim.opt.incsearch = true
-
--- Don't redraw while executing macros (good performance config)
-vim.opt.lazyredraw = true
-
--- For regular expressions turn magic on
-vim.opt.magic = true
-
--- Show matching brackets when text indicator is over them
-vim.opt.showmatch = true
--- How many tenths of a second to blink when matching brackets
-vim.cmd 'set mat=2'
-
--- No annoying sound on errors
-vim.cmd 'set noerrorbells'
-vim.cmd 'set novisualbell'
-vim.cmd 'set t_vb='
-vim.cmd 'set tm=500'
-
--- Add a bit extra margin to the left
-vim.cmd 'set foldcolumn=1'
-
----------------------------------------------------------------
--- => Colors and Fonts
----------------------------------------------------------------
--- Enable syntax highlighting
-vim.cmd 'syntax on'
-
-vim.cmd 'set termguicolors'
-vim.cmd 'colorscheme onedark'
-
-vim.cmd 'set background=dark'
-
--- Set utf8 as standard encoding and en_US as the standard language
-vim.cmd 'set encoding=utf8'
-
--- Use Unix as the standard file type
-vim.cmd 'set ffs=unix,dos,mac'
-
----------------------------------------------------------------
--- => Files, backups and undo
----------------------------------------------------------------
--- Turn backup off, since most stuff is in SVN, git etc. anyway...
-vim.cmd 'set nobackup'
-vim.cmd 'set nowb'
-vim.cmd 'set noswapfile'
-
-
----------------------------------------------------------------
--- => Text, tab and indent related
----------------------------------------------------------------
--- Use spaces instead of tabs
-vim.opt.expandtab = true
-
--- Be smart when using tabs ;)
-vim.opt.smarttab = true
-
--- 1 tab == 4 spaces
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-
--- Linebreak on 500 characters
-vim.cmd 'set lbr'
-vim.cmd 'set tw=500'
-
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.cmd 'set wrap'
-
-vim.opt.foldenable = false
---vim.opt.list = true
-vim.opt.shiftround = true
-vim.opt.modeline = true
-vim.opt.enc = 'utf-8'
-vim.opt.fenc = 'utf-8'
-vim.opt.conceallevel = 1
+-- Searching
+vim.opt.wildmenu = true -- tab complete on command line
+vim.opt.ignorecase = true -- case insensitive search...
+vim.opt.smartcase = true -- unless I use caps
+vim.opt.hlsearch = true -- highlight matching text
+vim.opt.incsearch = true -- update results while I type
 
 
 local util = require('util')

@@ -18,8 +18,12 @@ return function(packer)
                     },
                 },
                 indent = {
-                    enable = true
+                    enable = true,
+                    disable = {"php"}
                 },
+                rainbow = {
+                    enable = true
+                }
             }
             vim.wo.foldmethod = 'expr'
             vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
