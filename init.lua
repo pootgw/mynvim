@@ -3,6 +3,7 @@ vim.g.mapleader = ","
 vim.g.bulitin_lsp = true
 
 require('plugin')
+require('lspconfig')
 require('lang')
 require('keymap')
 
@@ -28,7 +29,7 @@ vim.opt.softtabstop = 4 -- <Tab> behaves as 4 spaces when editing
 -- Colors
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme catppuccin")
 
 -- Look and feel
 vim.opt.number = true -- numbers?
