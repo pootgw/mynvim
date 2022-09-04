@@ -1,24 +1,84 @@
 local treesitter = require("nvim-treesitter.configs")
 
-treesitter.setup {
-    --ensure_installed = 'maintained',
-    highlight = {
-        enable = true,
+vim.opt.foldmethod = "expr" -- use function to determine folds
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- use treesitter for folding
+
+treesitter.setup({
+    -- either "all" or a list of languages
+    ensure_installed = {
+        "php",
+        "go",
     },
-    incremental_selection = {
+    highlight = {
+        -- false will disable the whole extension
         enable = true,
-        keymaps = {
-            init_selection = 'gnn',
-            node_incremental = 'grn',
-            scope_incremental = 'grc',
-            node_decremental = 'grm',
-        },
     },
     indent = {
+        enable = false, -- buggy :/
+    },
+    -- custom text objects
+    textobjects = {
+        -- change/delete/select in function or class
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            },
+        },
+        -- easily move to next function/class
+        move = {
+            enable = true,
+            set_jumps = true, -- track in jumplist (<C-o>, <C-i>)
+            goto_next_start = {
+                ["]]"] = "@function.outer",
+                ["))"] = "@class.outer",
+            },
+            goto_next_end = {
+                ["[]"] = "@function.outer",
+                ["()"] = "@class.outer",
+            },
+            goto_previous_start = {
+                ["[["] = "@function.outer",
+                ["(("] = "@class.outer",
+            },
+            goto_previous_end = {
+                ["]["] = "@function.outer",
+                [")("] = "@class.outer",
+            },
+        },
+        -- peek definitions from LSP
+        lsp_interop = {
+            enable = true,
+            border = "single",
+            peek_definition_code = {
+                ["<Leader>pf"] = "@function.outer",
+                ["<Leader>pc"] = "@class.outer",
+            },
+        },
+        swap = {
+            enable = true,
+            swap_next = {
+                ["<Leader>l"] = "@parameter.inner",
+            },
+            swap_previous = {
+                ["<Leader>h"] = "@parameter.outer",
+            },
+        },
+    },
+    context_commentstring = {
         enable = true,
-        disable = {"php"}
+        enable_autocmd = false,
     },
     rainbow = {
-        enable = true
-    }
-}
+        enable = true,
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags
+    },
+    autotag = {
+        enable = true,
+        filetypes = { "html", "vue" },
+    },
+})

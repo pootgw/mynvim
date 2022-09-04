@@ -60,8 +60,8 @@ util.noremap("n", "<Leader>fl", "<cmd>Telescope current_buffer_fuzzy_find<CR>") 
 util.noremap("n", "<Leader>fg", "<cmd>Telescope live_grep<CR>") -- search all lines in project
 util.noremap("n", "<Leader>fr", "<cmd>Telescope lsp_references<CR>") -- search references to symbol under cursor
 util.noremap("n", "<Leader>co", "<cmd>Telescope colorscheme<CR>") -- colorschemes
-util.noremap("n", "<Leader>gc", "<cmd>Telescope git_branches<CR>") -- checkout different branches
-util.noremap("n", "<Leader>re", "<cmd>Telescope git_commits<CR>") -- checkout commits; <CR> to checkout, <C-r>[m, s, h] to reset [mixed, soft, hard]
+util.noremap("n", "<Leader>gb", "<cmd>Telescope git_branches<CR>") -- checkout different branches
+util.noremap("n", "<Leader>gc", "<cmd>Telescope git_commits<CR>") -- checkout commits; <CR> to checkout, <C-r>[m, s, h] to reset [mixed, soft, hard]
 
 
 -- jump to items in quickfix list
