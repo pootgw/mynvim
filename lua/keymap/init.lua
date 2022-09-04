@@ -43,6 +43,16 @@ util.noremap("t", "<C-l>", [[<C-\><C-n><C-w>l]])
 --mapper("n", "+", "=") -- new format mapping
 --mapper("n", "<Leader>nn", ":set number!<CR>") -- toggle line numbers
 
+-- Things that require plugins
+util.noremap("n", "<Leader>nt", ":NvimTreeToggle<CR>") -- toggle file browser in left split
+util.noremap("n", "<Leader>nf", ":NvimTreeFindFile<CR>") -- open file browser in left split with the current file focused
+util.noremap("n", "<Leader>nr", ":NvimTreeRefresh<CR>") -- refresh file browser contents
+util.noremap("n", "<Leader>z", ":call ToggleFocus()<CR>") -- toggle focus on current window
+--util.noremap("n", "<Leader>tn", ":call termcmd#vert()<CR>") -- open new term in vertical split
+--util.noremap("n", "<Leader>ts", ":call termcmd#horiz()<CR>") -- open new term in horizontal split
+util.noremap("n", "<Leader>ou", "<cmd>AerialToggle!<CR>") -- toggle code outline, powered by tree-sitter
+--util.noremap("n", "<Leader>rr", "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>") -- restart language servers
+
 -- Telescope integration
 util.noremap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>") -- search all files, respecting .gitignore if one exists
 util.noremap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>") -- search open buffers
@@ -61,5 +71,5 @@ util.noremap("n", "<Leader>re", "<cmd>Telescope git_commits<CR>") -- checkout co
 --end)
 
 -- Git things
---mapper("n", "<Leader>gs", ":tab Git<CR>") -- `git status` in a new tab to save screen real estate
---mapper("n", "<Leader>gd", "<cmd>Gdiffsplit<CR>") -- open a split diffing the current file
+util.noremap("n", "<Leader>gs", ":tab Git<CR>") -- `git status` in a new tab to save screen real estate
+util.noremap("n", "<Leader>gd", "<cmd>Gdiffsplit<CR>") -- open a split diffing the current file

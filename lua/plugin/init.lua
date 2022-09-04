@@ -85,6 +85,27 @@ packer.startup(function(use)
         run = ':TSUpdate',
         config = function() require("plugin.config.treesitter") end,
     })
+    use({
+        "godlygeek/tabular", -- line it up
+        cmd = "Tab",
+    })
+    use({
+        "kyazdani42/nvim-tree.lua", -- no more netrw
+        config = function() require("plugin.config.tree") end,
+        cmd = { "NvimTreeToggle", "NvimTreeFindFile", "NvimTreeRefresh" },
+    })
+    use({
+        "stevearc/aerial.nvim", -- code outline
+        config = function() require("plugin.config.aerial") end,
+    })
+    use({
+        "anuvyklack/hydra.nvim", -- custom "modes"
+        config = function() require("plugin.config.hydra") end,
+    })
+    use({
+        "tpope/vim-fugitive", -- git integration
+        cmd = { "Git", "Gdiffsplit" },
+    })
 
     -- Grab all packages if we're setting up for the first time
     if packer_bootstrap then
