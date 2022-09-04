@@ -104,7 +104,7 @@ packer.startup(function(use)
     })
     use({
         "tpope/vim-fugitive", -- git integration
-        cmd = { "Git", "Gdiffsplit" },
+        cmd = { "Git", "Gvdiffsplit" },
     })
 
     -- Grab all packages if we're setting up for the first time

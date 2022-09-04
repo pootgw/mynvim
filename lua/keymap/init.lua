@@ -72,4 +72,6 @@ util.noremap("n", "<Leader>re", "<cmd>Telescope git_commits<CR>") -- checkout co
 
 -- Git things
 util.noremap("n", "<Leader>gs", ":tab Git<CR>") -- `git status` in a new tab to save screen real estate
-util.noremap("n", "<Leader>gd", "<cmd>Gdiffsplit<CR>") -- open a split diffing the current file
+util.noremap("n", "<Leader>gd", "<cmd>Gvdiffsplit<CR>") -- open a split diffing the current file
+util.noremap("n", "<Leader>gc", "<cmd>Git commit<CR>") -- git commit
+util.noremap("n", "<Leader>gb", "<cmd>Git blame<CR>") -- git blame

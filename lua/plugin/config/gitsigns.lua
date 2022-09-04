@@ -17,7 +17,7 @@ gitsigns.setup{
         follow_files = true
     },
     attach_to_untracked = true,
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
@@ -45,11 +45,14 @@ gitsigns.setup{
 
     on_attach = function(bufnr)
         local keymap_opts = { silent = true, noremap = true, buffer = bufnr }
-        vim.keymap.set("n", "=", "<cmd>Gitsigns preview_hunk<CR>", keymap_opts)
+        vim.keymap.set("n", "+", "<cmd>Gitsigns preview_hunk<CR>", keymap_opts)
         vim.keymap.set("n", "<Leader>hr", "<cmd>Gitsigns reset_hunk<CR>", keymap_opts)
         vim.keymap.set("n", "<Leader>hs", "<cmd>Gitsigns stage_hunk<CR>", keymap_opts)
         vim.keymap.set("n", "<Leader>hn", "<cmd>Gitsigns next_hunk<CR>", keymap_opts)
         vim.keymap.set("n", "<Leader>hp", "<cmd>Gitsigns prev_hunk<CR>", keymap_opts)
+        vim.keymap.set("n", "<Leader>bl", "<cmd>Gitsigns blame_line<CR>", keymap_opts)
+        vim.keymap.set("n", "<Leader>br", "<cmd>Gitsigns reset_buffer<CR>", keymap_opts)
+        vim.keymap.set("n", "<Leader>bs", "<cmd>Gitsigns stage_buffer<CR>", keymap_opts)
         vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { default = true, link = "GitSignsDelete" })
     end,
 }
