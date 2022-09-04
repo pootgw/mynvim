@@ -51,8 +51,6 @@ nvim_lsp.gopls.setup{
         },
     },
     on_attach = custom_attach,
-    --capabilities = require('plugin/nvim-cmp').capabilities(),
-    --on_attach = require('plugin/nvim-lspconfig').on_attach(),
 }
 
 -- for php
@@ -82,15 +80,11 @@ nvim_lsp.intelephense.setup{
     },
 
     on_attach = custom_attach,
-    --capabilities = require('plugin/nvim-cmp').capabilities(),
-    --on_attach = require('plugin/nvim-lspconfig').on_attach(),
 }
 
 -- for js
 nvim_lsp.tsserver.setup{
     on_attach = custom_attach,
-    --capabilities = require('plugin/nvim-cmp').capabilities(),
-    --on_attach = require('plugin/nvim-lspconfig').on_attach(),
 }
 
 -- for lua
@@ -103,6 +97,4 @@ nvim_lsp.sumneko_lua.setup{
         }
     },
     on_attach = custom_attach,
-    --capabilities = require('plugin/nvim-cmp').capabilities(),
-    --on_attach = require('plugin/nvim-lspconfig').on_attach(),
 }
