@@ -6,6 +6,7 @@ require('plugin')
 require('lspconfig')
 require('lang')
 require('keymap')
+require('autocmd')
 
 -- Behaviors
 vim.opt.belloff = "all" -- NO BELLS!
