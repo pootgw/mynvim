@@ -14,6 +14,16 @@ au("BufEnter", {
     end,
 })
 
+-- Return to last edit position when opening files (You want this!)
+au("BufReadPost", {
+    pattern = "*",
+    callback = function()
+        if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+            vim.cmd("normal! g'\"")
+        end
+    end,
+})
+
 local term_group = augroup("term", { clear = false })
 au("TermOpen", {
     group = term_group,
