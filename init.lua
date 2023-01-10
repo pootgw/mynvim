@@ -2,6 +2,12 @@
 vim.g.mapleader = ","
 vim.g.bulitin_lsp = true
 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
 require('plugin')
 require('lspconfig')
 require('lang')
@@ -30,24 +36,24 @@ vim.opt.softtabstop = 4 -- <Tab> behaves as 4 spaces when editing
 -- Colors
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme tokyonight-moon")
 
 -- Look and feel
-vim.opt.number = true -- numbers?
-vim.opt.relativenumber = false -- no numbers?
-vim.opt.signcolumn = "auto" -- show the sign column if necessary
+vim.opt.number = true -- numbers
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes" -- show the sign column if necessary
 vim.opt.cursorline = false -- don't highlight current line
 vim.opt.list = true -- show list chars
---vim.opt.listchars = {
---    -- these list chars
---    tab = "<->",
---    nbsp = "␣",
---    extends = "…",
---    precedes = "…",
---    trail = "·",
---    multispace = "·", -- show chars if I have multiple spaces between text
---    leadmultispace = " ", -- ...but don't show any when they're at the start
---}
+vim.opt.listchars = {
+    -- these list chars
+    tab = "<->",
+    nbsp = "␣",
+    extends = "…",
+    precedes = "…",
+    trail = "·",
+    multispace = "·", -- show chars if I have multiple spaces between text
+    leadmultispace = " ", -- ...but don't show any when they're at the start
+}
 vim.opt.scrolloff = 10 -- padding between cursor and top/bottom of window
 vim.opt.foldlevel = 0 -- allow folding the whole way down
 vim.opt.foldlevelstart = 99 -- open files with all folds open

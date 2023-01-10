@@ -87,3 +87,9 @@ au("FileType", {
 --    pattern = "vue",
 --    command = "TSBufEnable indent",
 --})
+
+-- Debugger repl autocomplete
+au("FileType", {
+    pattern = "dap-repl",
+    callback = function() require("dap.ext.autocompl").attach() end,
+})

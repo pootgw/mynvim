@@ -1,72 +1,72 @@
 local Hydra = require("hydra")
 
 -- window resize mode
+-- Hydra({
+--     name = "Resize",
+--     body = "<C-w>",
+--     config = {
+--         mode = { "n" },
+--         color = "red",
+--         invoke_on_body = true,
+--         hint = {
+--             type = "window",
+--             position = "middle",
+--             border = "rounded",
+--         },
+--     },
+--     heads = {
+--         { "r", "<C-w>r", { silent = true, desc = "rotate (clockwise)" } },
+--         { "R", "<C-w>R", { silent = true, desc = "Rotate (counter clockwise)" } },
+--         { "x", "<C-w>x", { silent = true, desc = "eXchange" } },
+--         { "H", "<C-w>H", { silent = true, desc = "move left" } },
+--         { "J", "<C-w>J", { silent = true, desc = "move down" } },
+--         { "K", "<C-w>K", { silent = true, desc = "move up" } },
+--         { "L", "<C-w>L", { silent = true, desc = "move right" } },
+--         { "<", "<C-w><", { silent = true, desc = "shrink horizontally" } },
+--         { "-", "<C-w>-", { silent = true, desc = "shrink vertically" } },
+--         { "+", "<C-w>+", { silent = true, desc = "grow vertically" } },
+--         { ">", "<C-w>>", { silent = true, desc = "grow horizontally" } },
+--         { "=", "<C-w>=", { silent = true, desc = "equalize sizes", exit = true } },
+--         { "<C-h>", "<C-w>h", { silent = true, desc = "focus left" } },
+--         { "<C-j>", "<C-w>j", { silent = true, desc = "focus down" } },
+--         { "<C-k>", "<C-w>k", { silent = true, desc = "focus up" } },
+--         { "<C-l>", "<C-w>l", { silent = true, desc = "focus right" } },
+--     },
+-- })
+
+--debug mode
+local dap = require("dap")
+local dapui = require("dapui")
 Hydra({
-    name = "Resize",
-    body = "<C-w>",
+    name = "Debug",
+    body = "<leader>D",
     config = {
-        mode = { "n" },
-        color = "red",
+        color = "pink",
         invoke_on_body = true,
         hint = {
-            type = "window",
-            position = "middle",
+            type = "cmdline",
+            position = "top",
             border = "rounded",
         },
+        on_enter = function()
+            dap.continue()
+            dapui.open({})
+        end,
+        on_exit = function()
+            dap.repl.close()
+            dapui.close({})
+        end,
     },
     heads = {
-        { "r", "<C-w>r", { silent = true, desc = "rotate (clockwise)" } },
-        { "R", "<C-w>R", { silent = true, desc = "Rotate (counter clockwise)" } },
-        { "x", "<C-w>x", { silent = true, desc = "eXchange" } },
-        { "H", "<C-w>H", { silent = true, desc = "move left" } },
-        { "J", "<C-w>J", { silent = true, desc = "move down" } },
-        { "K", "<C-w>K", { silent = true, desc = "move up" } },
-        { "L", "<C-w>L", { silent = true, desc = "move right" } },
-        { "<", "<C-w><", { silent = true, desc = "shrink horizontally" } },
-        { "-", "<C-w>-", { silent = true, desc = "shrink vertically" } },
-        { "+", "<C-w>+", { silent = true, desc = "grow vertically" } },
-        { ">", "<C-w>>", { silent = true, desc = "grow horizontally" } },
-        { "=", "<C-w>=", { silent = true, desc = "equalize sizes", exit = true } },
-        { "<C-h>", "<C-w>h", { silent = true, desc = "focus left" } },
-        { "<C-j>", "<C-w>j", { silent = true, desc = "focus down" } },
-        { "<C-k>", "<C-w>k", { silent = true, desc = "focus up" } },
-        { "<C-l>", "<C-w>l", { silent = true, desc = "focus right" } },
+        { "c", dap.continue, { desc = "continue" } },
+        { "s", dap.toggle_breakpoint, { desc = "toggle breakpoint" } },
+        { "i", dap.step_into, { desc = "step into" } },
+        { "o", dap.step_over, { desc = "step over" } },
+        { "r", dap.repl.open, { desc = "open repl" } },
+        { "K", dapui.eval, { desc = "eval variable" } },
+        { "q", dap.terminate, { exit = true, desc = "terminate" } },
     },
 })
-
--- debug mode
---local dap = require("dap")
---local dapui = require("dapui")
---Hydra({
---    name = "Debug",
---    body = "<leader>D",
---    config = {
---        color = "pink",
---        invoke_on_body = true,
---        hint = {
---            type = "cmdline",
---            position = "top",
---            border = "rounded",
---        },
---        on_enter = function()
---            dap.continue()
---            dapui.open({})
---        end,
---        on_exit = function()
---            dap.repl.close()
---            dapui.close({})
---        end,
---    },
---    heads = {
---        { "c", dap.continue, { desc = "continue" } },
---        { "s", dap.toggle_breakpoint, { desc = "toggle breakpoint" } },
---        { "i", dap.step_into, { desc = "step into" } },
---        { "o", dap.step_over, { desc = "step over" } },
---        { "r", dap.repl.open, { desc = "open repl" } },
---        { "K", dapui.eval, { desc = "eval variable" } },
---        { "q", dap.terminate, { exit = true, desc = "terminate" } },
---    },
---})
 
 -- git mode
 local gs = require("gitsigns")

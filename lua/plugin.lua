@@ -20,16 +20,11 @@ packer.startup(function(use)
     use("nvim-lua/popup.nvim") -- popup windows
     use("nvim-lua/plenary.nvim") -- utility functions
 
-    -- Essentials
-    use({
-        "nvim-telescope/telescope.nvim", -- fuzzy find ALL the things
-        config = function() require("plugin.telescope") end,
-    })
-    use({
-        'windwp/nvim-autopairs',
-        config = function() require("plugin.autopairs") end,
-    })
-    use("tpope/vim-surround")
+    -- lsp
+    use('neovim/nvim-lspconfig')
+    use('williamboman/nvim-lsp-installer')
+
+    -- completion
     use({
         "hrsh7th/nvim-cmp", -- autocomplete
         requires = {
@@ -48,27 +43,74 @@ packer.startup(function(use)
         config = function() require("plugin.cmp") end,
         module = "cmp",
     })
-
-    -- lsp
-    use('neovim/nvim-lspconfig')
-    use("jose-elias-alvarez/null-ls.nvim")
-    use('williamboman/nvim-lsp-installer')
-
-    -- looks
     use({
-        'lewis6991/gitsigns.nvim',
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function() require("plugin.gitsigns") end,
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function() require("plugin.null-ls") end,
     })
+
+    -- telescope
+    use({
+        "nvim-telescope/telescope.nvim", -- fuzzy find ALL the things
+        config = function() require("plugin.telescope") end,
+    })
+    use({
+        "nvim-telescope/telescope-ui-select.nvim", -- Use telescope to override vim.ui.select
+        requires = { "nvim-telescope/telescope.nvim" },
+    })
+    use({
+        "nvim-telescope/telescope-fzf-native.nvim", -- fzf-like searching for telescope
+        run = "make",
+    })
+    use({
+        "nvim-telescope/telescope-dap.nvim", -- telescope picker for dap actions/configuraitons
+        requires = { "mfussenegger/nvim-dap", "nvim-telescope/telescope.nvim" },
+    })
+
+    -- debug
+    use({
+        'mfussenegger/nvim-dap',
+    })
+    use({
+        'leoluz/nvim-dap-go',
+        config = function() require("plugin.dap-go") end,
+    })
+    use ({ 
+        "rcarriga/nvim-dap-ui", 
+        config = function() require("plugin.dap-ui") end,
+    })
+    use ({
+        'theHamsta/nvim-dap-virtual-text',
+        config = function() require("plugin.dap-virtual-text") end,
+    })
+
+    -- quick tools
+    use("tpope/vim-surround")
+    use({
+        'windwp/nvim-autopairs',
+        config = function() require("plugin.autopairs") end,
+    })
+    use({
+        "anuvyklack/hydra.nvim", -- custom "modes"
+        config = function() require("plugin.hydra") end,
+    })
+    use({
+        "godlygeek/tabular", -- line it up
+        cmd = "Tab",
+    })
+
+    -- beauty
     use({
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = function() require("plugin.lualine") end,
     })
     use({
-        "nvim-telescope/telescope-ui-select.nvim", -- Use telescope to override vim.ui.select
-        requires = { "nvim-telescope/telescope.nvim" },
+        'akinsho/bufferline.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = function() require("plugin.bufferline") end,
     })
+
+    -- colorscheme
     use({
         "catppuccin/nvim", -- the lua colorscheme
         as = "catppuccin",
@@ -76,19 +118,17 @@ packer.startup(function(use)
         run = ":CatppuccinCompile",
     })
     use({
-        'akinsho/bufferline.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = function() require("plugin.bufferline") end,
+        "folke/tokyonight.nvim",
+        config = function() require("plugin.tokyonight") end,
     })
-    use({
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        config = function() require("plugin.treesitter") end,
-    })
-    use({
-        "godlygeek/tabular", -- line it up
-        cmd = "Tab",
-    })
+
+    -- use({
+    --     'nvim-treesitter/nvim-treesitter',
+    --     run = ':TSUpdate',
+    --     config = function() require("plugin.treesitter") end,
+    -- })
+
+    -- like ide ?
     use({
         "kyazdani42/nvim-tree.lua", -- no more netrw
         config = function() require("plugin.tree") end,
@@ -98,13 +138,16 @@ packer.startup(function(use)
         "stevearc/aerial.nvim", -- code outline
         config = function() require("plugin.aerial") end,
     })
-    use({
-        "anuvyklack/hydra.nvim", -- custom "modes"
-        config = function() require("plugin.hydra") end,
-    })
+
+    -- git
     use({
         "tpope/vim-fugitive", -- git integration
         cmd = { "Git", "Gvdiffsplit" },
+    })
+    use({
+        'lewis6991/gitsigns.nvim',
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function() require("plugin.gitsigns") end,
     })
 
     -- Grab all packages if we're setting up for the first time

@@ -48,6 +48,7 @@ util.noremap("n", "<Leader>nt", ":NvimTreeToggle<CR>") -- toggle file browser in
 util.noremap("n", "<Leader>nf", ":NvimTreeFindFile<CR>") -- open file browser in left split with the current file focused
 util.noremap("n", "<Leader>nr", ":NvimTreeRefresh<CR>") -- refresh file browser contents
 util.noremap("n", "<Leader>z", ":call ToggleFocus()<CR>") -- toggle focus on current window
+util.noremap("n", "<Leader>nc", ":NvimTreeCollapse<CR>") -- toggle focus on current window
 --util.noremap("n", "<Leader>tn", ":call termcmd#vert()<CR>") -- open new term in vertical split
 --util.noremap("n", "<Leader>ts", ":call termcmd#horiz()<CR>") -- open new term in horizontal split
 util.noremap("n", "<Leader>ou", "<cmd>AerialToggle!<CR>") -- toggle code outline, powered by tree-sitter
