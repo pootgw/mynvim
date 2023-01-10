@@ -82,12 +82,6 @@ au("FileType", {
     callback = function() vim.keymap.set("n", "q", ":q<CR>", { noremap = true, silent = true, buffer = true }) end,
 })
 
--- Enable treesitter powered indent for vue files only
---au("FileType", {
---    pattern = "vue",
---    command = "TSBufEnable indent",
---})
-
 -- Debugger repl autocomplete
 au("FileType", {
     pattern = "dap-repl",

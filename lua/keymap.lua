@@ -49,20 +49,20 @@ util.noremap("n", "<Leader>nf", ":NvimTreeFindFile<CR>") -- open file browser in
 util.noremap("n", "<Leader>nr", ":NvimTreeRefresh<CR>") -- refresh file browser contents
 util.noremap("n", "<Leader>z", ":call ToggleFocus()<CR>") -- toggle focus on current window
 util.noremap("n", "<Leader>nc", ":NvimTreeCollapse<CR>") -- toggle focus on current window
---util.noremap("n", "<Leader>tn", ":call termcmd#vert()<CR>") -- open new term in vertical split
---util.noremap("n", "<Leader>ts", ":call termcmd#horiz()<CR>") -- open new term in horizontal split
+util.noremap("n", "<Leader>tn", ":call termcmd#vert()<CR>") -- open new term in vertical split
+util.noremap("n", "<Leader>ts", ":call termcmd#horiz()<CR>") -- open new term in horizontal split
 util.noremap("n", "<Leader>ou", "<cmd>AerialToggle!<CR>") -- toggle code outline, powered by tree-sitter
 --util.noremap("n", "<Leader>rr", "<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>") -- restart language servers
 
 -- Telescope integration
 util.noremap("n", "<Leader>ff", "<cmd>Telescope find_files<CR>") -- search all files, respecting .gitignore if one exists
-util.noremap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>") -- search open buffers
-util.noremap("n", "<Leader>fl", "<cmd>Telescope current_buffer_fuzzy_find<CR>") -- search lines in current buffer
+--util.noremap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>") -- search open buffers
+--util.noremap("n", "<Leader>fl", "<cmd>Telescope current_buffer_fuzzy_find<CR>") -- search lines in current buffer
 util.noremap("n", "<Leader>fg", "<cmd>Telescope live_grep<CR>") -- search all lines in project
 util.noremap("n", "<Leader>fr", "<cmd>Telescope lsp_references<CR>") -- search references to symbol under cursor
-util.noremap("n", "<Leader>co", "<cmd>Telescope colorscheme<CR>") -- colorschemes
-util.noremap("n", "<Leader>gb", "<cmd>Telescope git_branches<CR>") -- checkout different branches
-util.noremap("n", "<Leader>gc", "<cmd>Telescope git_commits<CR>") -- checkout commits; <CR> to checkout, <C-r>[m, s, h] to reset [mixed, soft, hard]
+--util.noremap("n", "<Leader>co", "<cmd>Telescope colorscheme<CR>") -- colorschemes
+util.noremap("n", "<Leader>fb", "<cmd>Telescope git_branches<CR>") -- checkout different branches
+util.noremap("n", "<Leader>fc", "<cmd>Telescope git_commits<CR>") -- checkout commits; <CR> to checkout, <C-r>[m, s, h] to reset [mixed, soft, hard]
 
 
 -- jump to items in quickfix list
