@@ -74,8 +74,8 @@ packer.startup(function(use)
         'leoluz/nvim-dap-go',
         config = function() require("plugin.dap-go") end,
     })
-    use ({ 
-        "rcarriga/nvim-dap-ui", 
+    use ({
+        "rcarriga/nvim-dap-ui",
         config = function() require("plugin.dap-ui") end,
     })
     use ({
@@ -84,7 +84,7 @@ packer.startup(function(use)
     })
 
     -- quick tools
-    use("tpope/vim-surround")
+    use({"tpope/vim-surround"})
     use({
         'windwp/nvim-autopairs',
         config = function() require("plugin.autopairs") end,
@@ -92,10 +92,6 @@ packer.startup(function(use)
     use({
         "anuvyklack/hydra.nvim", -- custom "modes"
         config = function() require("plugin.hydra") end,
-    })
-    use({
-        "godlygeek/tabular", -- line it up
-        cmd = "Tab",
     })
 
     -- beauty
